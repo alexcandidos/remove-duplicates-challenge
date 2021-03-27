@@ -43,10 +43,10 @@ public class RemoveDuplicates {
 
         long endTime = System.nanoTime();
 
-        long timeElapsed = endTime - startTime;
+        long elapsedTime = endTime - startTime;
 
         // 1 second = 1_000_000_000 nano seconds
-        double elapsedTimeInSecond = (double) timeElapsed / 1_000_000_000;
+        double elapsedTimeInSecond = (double) elapsedTime / 1_000_000_000;
 
         System.out.println("\nCleaned (no duplicates) email list:");
 
