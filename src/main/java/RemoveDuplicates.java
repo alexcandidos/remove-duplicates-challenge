@@ -1,11 +1,16 @@
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 public class RemoveDuplicates {
 
-    public static void fillList(ArrayList<String> list){
+    /**
+     * Fills a list with half of the repeated elements
+     *
+     * @param list     The list to be filled
+     * @param listSize The list size
+     */
+    public static void fillList(ArrayList<String> list, int listSize) {
 
-        for(int i=0; i<100000; i++) {
+        for (int i = 0; i < listSize; i++) {
 
             if (i % 2 == 0) {
                 // half of the items in this loop will be unique elements
@@ -17,8 +22,14 @@ public class RemoveDuplicates {
         }
     }
 
-    public static void removeDuplicates(ArrayList<String> list){
-
+    /**
+     * @param list The list to be cleared
+     */
+    public static void removeDuplicates(ArrayList<String> list) {
+        /**
+         * LinkedHashSet contains unique elements allows us to maintain the insertion order of the elements
+         * It allows us to maintain the insertion order of the elements
+         */
         LinkedHashSet<String> myList = new LinkedHashSet<>(list);
 
         list.clear();
@@ -27,16 +38,21 @@ public class RemoveDuplicates {
 
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         ArrayList<String> list = new ArrayList<>();
+        int listSize = 100_000;
 
-        fillList(list);
+        fillList(list, listSize);
 
         System.out.println("Original email list:");
 
         System.out.println(list.toString());
 
+        /**
+         * We can use System.nanoTime() to measure elapsed time with nanosecond precision.
+         * It returns the current value of the running JVM’s high-resolution time source, in nanoseconds.
+         */
         long startTime = System.nanoTime();
 
         removeDuplicates(list);
@@ -48,7 +64,7 @@ public class RemoveDuplicates {
         // 1 second = 1_000_000_000 nano seconds
         double elapsedTimeInSecond = (double) elapsedTime / 1_000_000_000;
 
-        System.out.println("\nCleaned (no duplicates) email list:");
+        System.out.println("\nCleared (no duplicates) email list:");
 
         System.out.println(list.toString());
 
